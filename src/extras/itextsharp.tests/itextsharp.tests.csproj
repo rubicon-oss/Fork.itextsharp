@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release_woDrawing|AnyCPU' ">
     <OutputPath>bin\Release_woDrawing\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -6,6 +6,7 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -19,6 +20,13 @@
     <AssemblyName>itextsharp.tests</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>itextsharp.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE;DRAWING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,6 +45,7 @@
     <DefineConstants>TRACE;DRAWING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_woDrawing|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +54,7 @@
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -78,13 +89,13 @@
     <Compile Include="iTextSharp\text\io\GroupedRandomAccessSourceTest.cs" />
     <Compile Include="iTextSharp\text\io\WindowRandomAccessSourceTest.cs" />
     <Compile Include="iTextSharp\text\pdf\AcroFieldsTest.cs" />
-	<Compile Include="iTextSharp\text\pdf\BarcodeMacroPDF417Test.cs" />
+    <Compile Include="iTextSharp\text\pdf\BarcodeMacroPDF417Test.cs" />
     <Compile Include="iTextSharp\text\pdf\BarcodeUnicodeTest.cs" />
     <Compile Include="iTextSharp\text\pdf\BookmarksTest.cs" />
-	<Compile Include="iTextSharp\text\pdf\CompressionTest.cs" />
+    <Compile Include="iTextSharp\text\pdf\CompressionTest.cs" />
     <Compile Include="iTextSharp\text\pdf\DefaultSplitCharacterProfilingTest.cs" />
     <Compile Include="iTextSharp\text\pdf\FreeTextFlatteningTest.cs" />
-	<Compile Include="iTextSharp\text\pdf\PdfDictionaryTest.cs" />
+    <Compile Include="iTextSharp\text\pdf\PdfDictionaryTest.cs" />
     <Compile Include="iTextSharp\text\pdf\PdfEncryptionTest.cs" />
     <Compile Include="iTextSharp\text\pdf\CMapAwareDocumentFontTest.cs" />
     <Compile Include="iTextSharp\text\pdf\cs\DeviceNColorSpaceTest.cs" />
@@ -197,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="itextsharp.snk" />
+    <None Include="packages.config" />
     <None Include="resources\testutils\CompareToolTest\cmp_simple_pdf.pdf" />
     <None Include="resources\testutils\CompareToolTest\cmp_tagged_pdf.pdf" />
     <None Include="resources\testutils\CompareToolTest\simple_pdf.pdf" />
