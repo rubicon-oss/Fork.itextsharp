@@ -305,7 +305,7 @@ namespace iTextSharp.text.pdf.security {
                         EssCertIDv2 cerv2 = cerv2m[0];
                         AlgorithmIdentifier ai2 = cerv2.HashAlgorithm;
                         byte[] enc2 = signCert.GetEncoded();
-                        IDigest m2 = DigestUtilities.GetDigest(ai2.ObjectID.Id);
+                        IDigest m2 = DigestUtilities.GetDigest(ai2.Algorithm);
                         byte[] signCertHash = DigestAlgorithms.Digest(m2, enc2);
                         byte[] hs2 = cerv2.GetCertHash();
                         if (!Arrays.AreEqual(signCertHash, hs2))
@@ -606,7 +606,7 @@ namespace iTextSharp.text.pdf.security {
                 digest = sig.GenerateSignature();
             MemoryStream bOut = new MemoryStream();
             
-            Asn1OutputStream dout = new Asn1OutputStream(bOut);
+            Asn1OutputStream dout = Asn1OutputStream.Create(bOut);
             dout.WriteObject(new DerOctetString(digest));
             dout.Close();
             
@@ -673,7 +673,7 @@ namespace iTextSharp.text.pdf.security {
             
             // Create the contentInfo.
             Asn1EncodableVector v = new Asn1EncodableVector();
-            v.Add(new DerObjectIdentifier(SecurityIDs.ID_PKCS7_DATA));
+            v.Add(SecurityIDs.ID_PKCS7_DATA);
             if (RSAdata != null)
                 v.Add(new DerTaggedObject(0, new DerOctetString(RSAdata)));
             DerSequence contentinfo = new DerSequence(v);
@@ -748,12 +748,12 @@ namespace iTextSharp.text.pdf.security {
             // and return it
             //
             Asn1EncodableVector whole = new Asn1EncodableVector();
-            whole.Add(new DerObjectIdentifier(SecurityIDs.ID_PKCS7_SIGNED_DATA));
+            whole.Add(SecurityIDs.ID_PKCS7_SIGNED_DATA);
             whole.Add(new DerTaggedObject(0, new DerSequence(body)));
             
             MemoryStream bOut = new MemoryStream();
             
-            Asn1OutputStream dout = new Asn1OutputStream(bOut);
+            Asn1OutputStream dout = Asn1OutputStream.Create(bOut);
             dout.WriteObject(new DerSequence(whole));
             dout.Close();
             
@@ -830,11 +830,11 @@ namespace iTextSharp.text.pdf.security {
         private DerSet GetAuthenticatedAttributeSet(byte[] secondDigest, byte[] ocsp, ICollection<byte[]> crlBytes, CryptoStandard sigtype) {
             Asn1EncodableVector attribute = new Asn1EncodableVector();
             Asn1EncodableVector v = new Asn1EncodableVector();
-            v.Add(new DerObjectIdentifier(SecurityIDs.ID_CONTENT_TYPE));
-            v.Add(new DerSet(new DerObjectIdentifier(SecurityIDs.ID_PKCS7_DATA)));
+            v.Add(SecurityIDs.ID_CONTENT_TYPE);
+            v.Add(new DerSet(SecurityIDs.ID_PKCS7_DATA));
             attribute.Add(new DerSequence(v));
             v = new Asn1EncodableVector();
-            v.Add(new DerObjectIdentifier(SecurityIDs.ID_MESSAGE_DIGEST));
+            v.Add(SecurityIDs.ID_MESSAGE_DIGEST);
             v.Add(new DerSet(new DerOctetString(secondDigest)));
             attribute.Add(new DerSequence(v));
 
@@ -849,7 +849,7 @@ namespace iTextSharp.text.pdf.security {
             }
             if (ocsp != null || haveCrl) {
                 v = new Asn1EncodableVector();
-                v.Add(new DerObjectIdentifier(SecurityIDs.ID_ADBE_REVOCATION));
+                v.Add(SecurityIDs.ID_ADBE_REVOCATION);
 
                 Asn1EncodableVector revocationV = new Asn1EncodableVector();
 
@@ -883,7 +883,7 @@ namespace iTextSharp.text.pdf.security {
             }
             if (sigtype == CryptoStandard.CADES) {
                 v = new Asn1EncodableVector();
-                v.Add(new DerObjectIdentifier(SecurityIDs.ID_AA_SIGNING_CERTIFICATE_V2));
+                v.Add(SecurityIDs.ID_AA_SIGNING_CERTIFICATE_V2);
 
                 Asn1EncodableVector aaV2 = new Asn1EncodableVector();
                 String sha256Oid = DigestAlgorithms.GetAllowedDigests(DigestAlgorithms.SHA256);
