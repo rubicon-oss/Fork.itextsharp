@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>itextsharp.pdfa</RootNamespace>
-    <AssemblyName>itextsharp.pdfa</AssemblyName>
+    <AssemblyName>Rubicon.itextsharp.pdfa</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>itextsharp.snk</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
