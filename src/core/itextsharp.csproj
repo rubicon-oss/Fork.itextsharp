@@ -40,7 +40,7 @@
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;DEBUG;DRAWING</DefineConstants>
-    <DocumentationFile>iTextSharp.xml</DocumentationFile>
+    <DocumentationFile>Rubicon.iTextSharp.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -62,7 +62,7 @@
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;DRAWING</DefineConstants>
-    <DocumentationFile>iTextSharp.xml</DocumentationFile>
+    <DocumentationFile>Rubicon.iTextSharp.xml</DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -81,7 +81,7 @@
     <OutputPath>bin\Debug_woDrawing\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <BaseAddress>285212672</BaseAddress>
-    <DocumentationFile>iTextSharp.xml</DocumentationFile>
+    <DocumentationFile>Rubicon.iTextSharp.xml</DocumentationFile>
     <NoWarn>1572;1587;1570;1591;1573;1596</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -92,7 +92,7 @@
     <OutputPath>bin\Release_woDrawing\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <BaseAddress>285212672</BaseAddress>
-    <DocumentationFile>iTextSharp.xml</DocumentationFile>
+    <DocumentationFile>Rubicon.iTextSharp.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <NoWarn>1572;1587;1570;1591;1573;1596</NoWarn>
     <DebugType>
@@ -1406,6 +1406,7 @@
     <Compile Include="System\util\collections\ReadOnlyDictionary.cs" />
     <Compile Include="System\util\zlib\ZInputStream.cs" />
     <Compile Include="System\util\zlib\ZOutputStream.cs" />
+    <None Include="..\..\readme.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
